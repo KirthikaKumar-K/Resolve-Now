@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createGitHubIssue, createTicket } from "../api/ticketApi";
+import { ChipInput } from "./ChipInput";
 
 interface Props {
   onClose: () => void;
@@ -8,6 +9,8 @@ interface Props {
 export const CreateTicketModal: React.FC<Props> = ({ onClose }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [labels, setLabels] = useState<string[]>([]);
+  const [assignees, setAssignees] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +19,7 @@ export const CreateTicketModal: React.FC<Props> = ({ onClose }) => {
       title,
       description,
     });
-    await createGitHubIssue(title, description, ["bug"], ["KirthikaKumar-K"]); 
+    await createGitHubIssue(title, description, labels, assignees);
 
     onClose(); // close modal after save
   };
@@ -48,6 +51,20 @@ return (
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none"
             />
           </div>
+
+          <ChipInput
+            label="Labels"
+            placeholder="Type and press Enter to add labels"
+            chips={labels}
+            onChipsChange={setLabels}
+          />
+
+          <ChipInput
+            label="Assignees"
+            placeholder="Type and press Enter to add assignees"
+            chips={assignees}
+            onChipsChange={setAssignees}
+          />
         </div>
 
         <div className="flex gap-3 mt-6">

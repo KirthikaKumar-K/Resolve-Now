@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Plus, Power } from "lucide-react";
 import { CreateTicketModal } from "./CreateTicketModal";
 import { TicketTable } from "./TicketTable";
 
@@ -25,9 +26,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ role, onLogout }) => {
 
           <button
             onClick={onLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg font-semibold"
+            className=" text-blue p-3 rounded-lg font-semibold transition duration-200 hover:scale-105"
+            aria-label="Logout"
           >
-            Logout
+            <Power size={20} />
           </button>
         </div>
 
@@ -37,9 +39,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ role, onLogout }) => {
             <div className="flex justify-end mb-6">
               <button
                 onClick={() => setShowModal(true)}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg"
+                className=" flex items-center gap-2 text-blue-600  bg-blue-100 px-6 py-3 rounded-lg font-semibold"
               >
-                + Create Ticket
+                <Plus size={20} /> Create Ticket
               </button>
             </div>
 
