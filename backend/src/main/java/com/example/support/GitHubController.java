@@ -1,3 +1,5 @@
+package com.example.support;
+
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
@@ -9,7 +11,7 @@ import java.util.*;
 public class GitHubController {
 
     private static final Dotenv dotenv = Dotenv.load();
-   private static final String GITHUB_TOKEN = dotenv.get("GITHUB_TOKEN");
+    private static final String GITHUB_TOKEN = dotenv.get("GITHUB_TOKEN");
     private static final String OWNER = dotenv.get("GITHUB_OWNER");
     private static final String REPO = dotenv.get("GITHUB_REPO");
 
@@ -51,8 +53,7 @@ public class GitHubController {
 
             HttpEntity<Map<String, Object>> entity = new HttpEntity<>(payload, headers);
 
-            ResponseEntity<String> response =
-                    restTemplate.postForEntity(url, entity, String.class);
+            ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 
             System.out.println("GitHub Response Status = " + response.getStatusCode());
             System.out.println("GitHub Response Body = " + response.getBody());

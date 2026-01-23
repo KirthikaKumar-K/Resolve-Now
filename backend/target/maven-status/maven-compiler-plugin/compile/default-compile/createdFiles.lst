@@ -1,0 +1,7 @@
+com\example\support\config\CorsConfig$1.class
+com\example\support\Ticket.class
+com\example\support\TicketController.class
+com\example\support\GitHubController.class
+com\example\support\TicketRepository.class
+com\example\support\config\CorsConfig.class
+com\example\support\SupportApplication.class
