@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getTickets, updateTicketStatus, type Ticket, type TicketStatus } from "../api/ticketApi";
+import {
+  getTickets,
+  updateTicketStatus,
+  type Ticket,
+  type TicketStatus,
+} from "../api/ticketApi";
 
 interface TicketTableProps {
   statuses: TicketStatus[];
@@ -61,9 +66,7 @@ export const TicketTable: React.FC<TicketTableProps> = ({
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {ticket.title}
               </h3>
-              <p className="text-gray-600 text-sm mb-3">
-                {ticket.description}
-              </p>
+              <p className="text-gray-600 text-sm mb-3">{ticket.description}</p>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Status:</span>
                 <span className={getStatusColor(ticket.status)}>
@@ -80,7 +83,10 @@ export const TicketTable: React.FC<TicketTableProps> = ({
                 <select
                   value={ticket.status}
                   onChange={(e) =>
-                    handleStatusChange(ticket.id, e.target.value as TicketStatus)
+                    handleStatusChange(
+                      ticket.id,
+                      e.target.value as TicketStatus,
+                    )
                   }
                   className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >

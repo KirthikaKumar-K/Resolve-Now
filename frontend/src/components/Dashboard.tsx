@@ -46,19 +46,23 @@ export const Dashboard: React.FC<DashboardProps> = ({ role, onLogout }) => {
             </div>
 
             <div className="flex gap-2 mb-6 border-b">
-              {(["OPEN", "CLOSED"] as TicketStatus[]).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setUserTab(tab)}
-                  className={`px-4 py-2 font-semibold ${
-                    userTab === tab
-                      ? "text-blue-600 border-b-2 border-blue-600"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {tab === "OPEN" ? "📋 Open Tickets" : "✅ Closed Tickets"}
-                </button>
-              ))}
+              {(["OPEN", "IN_PROGRESS", "CLOSED"] as TicketStatus[]).map(
+                (tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setUserTab(tab)}
+                    className={`px-4 py-2 font-semibold ${
+                      userTab === tab
+                        ? "text-blue-600 border-b-2 border-blue-600"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    {tab === "OPEN" && "🔴 Open Tickets"}
+                    {tab === "IN_PROGRESS" && "🟡 In Progress Tickets"}
+                    {tab === "CLOSED" && "✅ Closed Tickets"}
+                  </button>
+                ),
+              )}
             </div>
 
             <TicketTable statuses={[userTab]} />

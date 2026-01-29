@@ -103,3 +103,15 @@ backend/.env
 3.  Revoke leaked PAT tokens immediately.
 
 ==================================================
+
+To run Java in Visual Studio Code 
+
+You need to add this Extension :
+
+1.   Open VS Code
+2.   Go to Extensions (Ctrl+Shift+X)
+3.   Search for "Extension Pack for Java"
+4.   Click Install
+
+This will install all necessary Extentions to run java
+==================================================
